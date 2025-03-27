@@ -1,12 +1,7 @@
 package com.example.rp.controller;
 
 import com.example.rp.model.Receipt;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.*;
-import org.yaml.snakeyaml.Yaml;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 
 @RestController
@@ -16,12 +11,6 @@ class RPRestController {
     private static final String NOT_FOUND = "No receipt found for that ID.";
 
     private final HashMap<String, Long> receiptIdToPointsMap = new HashMap<>();
-
-    public RPRestController() throws IOException {
-        File yamlFile = new ClassPathResource("api.yml").getFile();
-        Yaml yaml = new Yaml();
-        yaml.load(yamlFile.getPath());
-    }
 
     // /receipts/process
     // Returns the ID assigned to the receipt
